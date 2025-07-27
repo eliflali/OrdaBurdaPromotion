@@ -1,0 +1,14 @@
+{
+  "name": "ordaburda",
+  "version": "1.0.0",
+  "description": "OrdaBurda - Connect Through Events, Grow Through Community",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo 'Static site - no build needed'",
+    "start": "serve ."
+  },
+  "keywords": ["events", "social", "community", "networking"],
+  "author": "OrdaBurda Team",
+  "license": "MIT"
+}
