@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrdaBurda - Connect Through Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #533B4D 0%, #F564A9 50%, #FAA4BD 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: subtleFloat 12s ease-in-out infinite;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 0.6; transform: translateY(-5px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #fff, #f8f9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .tagline {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .description {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #533B4D;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary:hover {
+            background: #FAE3C6;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #FAE3C6 0%, #ffffff 50%, #FAE3C6 100%);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #F564A9, #FAA4BD);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #718096;
+            margin-bottom: 6rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3.5rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #533B4D, #F564A9, #FAA4BD);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #F564A9, #FAA4BD);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .feature-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+        }
+
+        .feature-description {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .team {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #533B4D 0%, #F564A9 50%, #FAA4BD 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .team-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 3px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .team-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .phases {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #FAE3C6 0%, #fff 50%, #FAE3C6 100%);
+        }
+
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .phase-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 5px solid;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .phase-card.phase-1 { 
+            border-left-color: #533B4D; 
+        }
+        .phase-card.phase-2 { 
+            border-left-color: #F564A9; 
+        }
+        .phase-card.phase-3 { 
+            border-left-color: #FAA4BD; 
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .phase-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .phase-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F564A9, #FAA4BD);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .phase-items {
+            list-style: none;
+        }
+
+        .phase-items li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 2rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .phase-items li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #F564A9;
+            font-weight: bold;
+        }
+
+        .phase-items li:hover {
+            color: #2d3748;
+            padding-left: 2.5rem;
+        }
+
+        .phase-items li:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #533B4D 0%, #533B4D 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #F564A9, #FAA4BD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .coming-soon {
+            background: linear-gradient(45deg, #F564A9, #FAA4BD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .tagline {
+                font-size: 1.5rem;
+            }
+            
+            .description {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid,
+            .team-grid,
+            .phases-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .feature-card,
+            .team-card,
+            .phase-card {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="logo">OrdaBurda</h1>
+                <p class="tagline">Connect Through Events, Grow Through Community</p>
+                <p class="description">
+                    Discover exciting events around you, make new friends, and create unforgettable memories. 
+                    Join communities that share your interests and build meaningful connections through shared experiences.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#features" class="btn btn-primary">
+                        Explore Features
+                    </a>
+                    <a href="#team" class="btn btn-secondary">
+                        Meet Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">
+                From event discovery to community building, OrdaBurda provides everything you need 
+                to connect with like-minded people and create amazing experiences together.
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">S</div>
+                    <h3 class="feature-title">Smart Event Discovery</h3>
+                    <p class="feature-description">
+                        Find events tailored to your interests with intelligent filtering. Discover new experiences nearby 
+                        or join online events from anywhere in the world.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">C</div>
+                    <h3 class="feature-title">Easy Event Creation</h3>
+                    <p class="feature-description">
+                        Create any type of event from intimate gatherings to large organizations. 
+                        Set capacity limits, manage approval processes, and share ticket information effortlessly.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">M</div>
+                    <h3 class="feature-title">Event Chat Groups</h3>
+                    <p class="feature-description">
+                        Connect with other participants through event-specific chat groups. 
+                        Build relationships before, during, and after events with real-time messaging.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">F</div>
+                    <h3 class="feature-title">Social Following System</h3>
+                    <p class="feature-description">
+                        Follow your favorite event creators and communities. Stay updated with events 
+                        from people and organizations you trust and admire.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">L</div>
+                    <h3 class="feature-title">Location Intelligence</h3>
+                    <p class="feature-description">
+                        Choose between precise locations or approximate areas for privacy. 
+                        Support for both physical venues and online events with integrated mapping.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">R</div>
+                    <h3 class="feature-title">Review & Rating System</h3>
+                    <p class="feature-description">
+                        Share your experience with others through reviews and ratings. 
+                        Help the community discover the best events and most reliable organizers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Meet the Team</h2>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">EL</div>
+                    <h3 class="team-name">Elif Lale</h3>
+                    <p class="team-role">Developer</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-avatar">CK</div>
+                    <h3 class="team-name">Caner Kurtnazar</h3>
+                    <p class="team-role">Developer</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-avatar">YP</div>
+                    <h3 class="team-name">Yusuf Polat</h3>
+                    <p class="team-role">UI/UX Designer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="phases" class="phases">
+        <div class="container">
+            <h2 class="section-title">Development Roadmap</h2>
+            <p class="section-subtitle">
+                Our strategic approach to building a comprehensive social event platform 
+                that grows with our community's needs.
+            </p>
+            
+            <div class="phases-grid">
+                <div class="phase-card phase-1">
+                    <h3 class="phase-title">
+                        <span class="phase-number">1</span>
+                        Core Foundation
+                    </h3>
+                    <ul class="phase-items">
+                        <li>Authentication & User Profiles</li>
+                        <li>Basic Event Creation & Discovery</li>
+                        <li>Chat System Implementation</li>
+                        <li>Social Following Features</li>
+                        <li>Settings & Preferences</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card phase-2">
+                    <h3 class="phase-title">
+                        <span class="phase-number">2</span>
+                        Enhanced Features
+                    </h3>
+                    <ul class="phase-items">
+                        <li>Advanced Event Management</li>
+                        <li>Event Categories & Filtering</li>
+                        <li>Photo Upload & Cover Images</li>
+                        <li>Ticketing Information System</li>
+                        <li>Location Services Integration</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card phase-3">
+                    <h3 class="phase-title">
+                        <span class="phase-number">3</span>
+                        Community Growth
+                    </h3>
+                    <ul class="phase-items">
+                        <li>Rating & Review System</li>
+                        <li>Push Notifications</li>
+                        <li>Event Analytics Dashboard</li>
+                        <li>Community Moderation Tools</li>
+                        <li>Advanced Search & Recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">OrdaBurda</div>
+                <div class="footer-text">Building connections through shared experiences</div>
+                <div class="coming-soon">Coming Soon</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
