@@ -12,17 +12,17 @@ const Team = () => {
     {
       name: "Elif Lale",
       role: "Geliştirici",
-      initials: "EL",
+      avatar: "/avatars/elif.png",
     },
     {
       name: "Caner Kurtnazar",
       role: "Geliştirici",
-      initials: "CK",
+      avatar: "/avatars/caner.png",
     },
     {
       name: "Yusuf Polat",
       role: "UI/UX Tasarımcı",
-      initials: "YP",
+      avatar: "/avatars/yusuf.png",
     },
   ];
 
@@ -77,11 +77,15 @@ const Team = () => {
             >
               <div className="relative mb-6">
                 <motion.div
-                  className="w-24 h-24 mx-auto bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-2xl font-bold border-2 border-white/30 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300 glow-secondary"
+                  className="w-24 h-24 mx-auto bg-white/20 backdrop-blur-md rounded-full overflow-hidden border-2 border-white/30 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300 glow-secondary"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
-                  {member.initials}
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
               </div>
 
