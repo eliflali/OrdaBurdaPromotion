@@ -91,7 +91,7 @@ const Features = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Etkinlik keşfinden topluluk oluşturmaya kadar, OrdaBurda benzer
+            Etkinlik keşfinden topluluk oluşturmaya kadar, ordaburda benzer
             düşünen insanlarla bağlantı kurmanız ve birlikte harika deneyimler
             yaratmanız için ihtiyacınız olan her şeyi sağlar.
           </motion.p>

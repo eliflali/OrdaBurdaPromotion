@@ -1,4 +1,4 @@
-// Design System for OrdaBurda
+// Design System for ordaburda
 // This file contains all the color palettes and design tokens for easy customization
 
 export interface ColorPalette {

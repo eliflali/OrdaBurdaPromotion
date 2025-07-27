@@ -5,11 +5,11 @@ import Features from "./components/Features";
 import Team from "./components/Team";
 import Phases from "./components/Phases";
 import Footer from "./components/Footer";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 
 function App() {
   useEffect(() => {
-    // Apply the default theme CSS variables
+    // Set the default theme (purple-pink) and apply CSS variables
+    setTheme("default");
     const cssVars = generateCSSVariables();
     Object.entries(cssVars).forEach(([property, value]) => {
       document.documentElement.style.setProperty(property, value);
@@ -18,7 +18,6 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <ThemeSwitcher />
       <Hero />
       <Features />
       <Team />

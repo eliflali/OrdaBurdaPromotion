@@ -35,10 +35,10 @@ const Footer = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.h3
-              className="text-4xl font-black bg-gradient-to-r from-secondary-400 to-secondary-200 bg-clip-text text-transparent mb-3 text-glow-secondary"
+              className="text-4xl font-black bg-gradient-to-r from-secondary-400 to-secondary-200 bg-clip-text text-transparent mb-3 text-glow-secondary font-afacad lowercase"
               whileHover={{ scale: 1.05 }}
             >
-              OrdaBurda
+              ordaburda
             </motion.h3>
             <p className="text-secondary-100 text-lg font-light max-w-md">
               Paylaşılan deneyimler aracılığıyla bağlantılar kuruyoruz
@@ -111,7 +111,7 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <p className="text-primary-200 text-sm">
-            © 2025 OrdaBurda. Tüm hakları saklıdır. | Sosyal etkinlik
+            © 2025 ordaburda. Tüm hakları saklıdır. | Sosyal etkinlik
             deneyiminizi dönüştürmeye hazırlanın.
           </p>
         </motion.div>
