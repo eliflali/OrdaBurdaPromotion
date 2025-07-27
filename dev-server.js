@@ -61,12 +61,26 @@ app.post("/api/collect-email", async (req, res) => {
       return res.status(400).json({ message: "Invalid email format" });
     }
 
+    // Use Turkey/Istanbul timezone (UTC+3)
     const now = new Date();
-    const formattedDate = `${
-      now.getMonth() + 1
-    }/${now.getDate()}/${now.getFullYear()}`;
-    const formattedTime = `${now.getHours().toString().padStart(2, "0")}:${now
-      .getMinutes()
+
+    // Convert to Turkey timezone (UTC+3)
+    const turkeyTime = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+
+    // Format date as MM/DD/YYYY with leading zeros (Turkey timezone)
+    const formattedDate = `${(turkeyTime.getUTCMonth() + 1)
+      .toString()
+      .padStart(2, "0")}/${turkeyTime
+      .getUTCDate()
+      .toString()
+      .padStart(2, "0")}/${turkeyTime.getUTCFullYear()}`;
+
+    // Format time as HH:MM with leading zeros (Turkey timezone)
+    const formattedTime = `${turkeyTime
+      .getUTCHours()
+      .toString()
+      .padStart(2, "0")}:${turkeyTime
+      .getUTCMinutes()
       .toString()
       .padStart(2, "0")}`;
 
@@ -85,7 +99,7 @@ app.post("/api/collect-email", async (req, res) => {
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: "Sheet1!A:D",
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
       resource: {
         values: values,
