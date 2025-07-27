@@ -12,17 +12,17 @@ const Team = () => {
     {
       name: "Elif Lale",
       role: "Geliştirici",
-      initials: "EL",
+      avatar: "/avatars/elif.png",
     },
     {
       name: "Caner Kurtnazar",
       role: "Geliştirici",
-      initials: "CK",
+      avatar: "/avatars/caner.png",
     },
     {
       name: "Yusuf Polat",
       role: "UI/UX Tasarımcı",
-      initials: "YP",
+      avatar: "/avatars/yusuf.png",
     },
   ];
 
@@ -85,7 +85,11 @@ const Team = () => {
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  {member.initials}
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
               </div>
 
