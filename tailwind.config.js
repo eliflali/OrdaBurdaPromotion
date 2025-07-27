@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        afacad: ["Afacad", "sans-serif"],
+      },
       colors: {
         primary: {
           50: "var(--color-primary-50)",

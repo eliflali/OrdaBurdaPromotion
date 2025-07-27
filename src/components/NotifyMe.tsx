@@ -68,7 +68,7 @@ const NotifyMe = () => {
               Teşekkürler!
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              E-posta adresiniz başarıyla kaydedildi. OrdaBurda lansmanı
+              E-posta adresiniz başarıyla kaydedildi. ordaburda lansmanı
               hakkında size haber vereceğiz!
             </p>
             <motion.button
@@ -125,7 +125,7 @@ const NotifyMe = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            OrdaBurda lansmanından haberdar olmak ve erken erişim fırsatlarından
+            ordaburda lansmanından haberdar olmak ve erken erişim fırsatlarından
             yararlanmak için e-posta adresinizi bırakın. Size özel güncellemeler
             ve beta test davetleri göndereceğiz.
           </motion.p>
@@ -199,7 +199,7 @@ const NotifyMe = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             <p className="text-sm text-gray-500 leading-relaxed">
-              E-posta adresinizi sadece OrdaBurda güncellemeleri için
+              E-posta adresinizi sadece ordaburda güncellemeleri için
               kullanacağız.
               <br />
               İstediğiniz zaman abonelikten çıkabilirsiniz.

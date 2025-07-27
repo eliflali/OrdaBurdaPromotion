@@ -102,7 +102,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              OrdaBurda
+              <span className="font-afacad lowercase">ordaburda</span>
             </motion.h1>
             <motion.div
               className="flex items-center justify-center gap-2 text-2xl md:text-3xl font-light opacity-95 mb-8"
@@ -111,7 +111,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Sparkles className="w-8 h-8 text-secondary-200" />
-              <span>Etkinliklerle Bağlan, Toplulukla Büyü</span>
+              <span>anı yaşa, hayatı keşfet</span>
               <Users className="w-8 h-8 text-secondary-200" />
             </motion.div>
           </motion.div>

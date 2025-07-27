@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Github, Linkedin, Palette } from "lucide-react";
 
 const Team = () => {
   const [ref, inView] = useInView({
@@ -14,19 +13,16 @@ const Team = () => {
       name: "Elif Lale",
       role: "Geliştirici",
       initials: "EL",
-      icon: Github,
     },
     {
       name: "Caner Kurtnazar",
       role: "Geliştirici",
       initials: "CK",
-      icon: Github,
     },
     {
       name: "Yusuf Polat",
       role: "UI/UX Tasarımcı",
       initials: "YP",
-      icon: Palette,
     },
   ];
 
@@ -70,40 +66,34 @@ const Team = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {teamMembers.map((member, index) => {
-            const IconComponent = member.icon;
-            return (
-              <motion.div
-                key={index}
-                className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl glow-primary hover:glow-secondary"
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="relative mb-6">
-                  <motion.div
-                    className="w-24 h-24 mx-auto bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-2xl font-bold border-2 border-white/30 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300 glow-secondary"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    {member.initials}
-                  </motion.div>
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-secondary-400 to-primary-500 rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 glow-accent">
-                    <IconComponent className="w-4 h-4 text-white" />
-                  </div>
-                </div>
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={index}
+              className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl glow-primary hover:glow-secondary"
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative mb-6">
+                <motion.div
+                  className="w-24 h-24 mx-auto bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-2xl font-bold border-2 border-white/30 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300 glow-secondary"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {member.initials}
+                </motion.div>
+              </div>
 
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-secondary-100 transition-colors text-glow-primary">
-                  {member.name}
-                </h3>
+              <h3 className="text-2xl font-bold mb-2 group-hover:text-secondary-100 transition-colors text-glow-primary">
+                {member.name}
+              </h3>
 
-                <p className="text-secondary-100 font-medium mb-4 opacity-90">
-                  {member.role}
-                </p>
-              </motion.div>
-            );
-          })}
+              <p className="text-secondary-100 font-medium mb-4 opacity-90">
+                {member.role}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
