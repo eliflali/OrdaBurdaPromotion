@@ -94,7 +94,19 @@ export default async function handler(req, res) {
 
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    console.error("Error details:", {
+      message: error.message,
+      stack: error.stack,
+      envVars: {
+        hasProjectId: !!process.env.GOOGLE_PROJECT_ID,
+        hasPrivateKey: !!process.env.GOOGLE_PRIVATE_KEY,
+        hasClientEmail: !!process.env.GOOGLE_CLIENT_EMAIL,
+        hasSheetId: !!process.env.GOOGLE_SHEET_ID,
+      }
+    });
+    res.status(500).json({ 
+      message: "Internal server error",
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Server error'
+    });
   }
 }
