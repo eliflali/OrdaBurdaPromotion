@@ -39,26 +39,26 @@ const Team = () => {
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <motion.h2
             className="text-5xl md:text-6xl font-black mb-6 relative inline-block text-glow-secondary"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={
-              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
             }
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           >
             Ekibi Tanıyın
             <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-full glow-secondary"></div>
           </motion.h2>
           <motion.p
             className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed font-light"
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
           >
             Tutkulu ve deneyimli ekibimiz, sosyal bağlantıları güçlendiren
             yenilikçi çözümler yaratmak için bir araya geldi.
@@ -69,17 +69,21 @@ const Team = () => {
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
-              className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl glow-primary hover:glow-secondary"
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05 }}
+              className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl glow-primary hover:glow-secondary"
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+              whileHover={{ scale: 1.02 }}
             >
               <div className="relative mb-6">
                 <motion.div
-                  className="w-24 h-24 mx-auto bg-white/20 backdrop-blur-md rounded-full overflow-hidden border-2 border-white/30 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300 glow-secondary"
+                  className="w-24 h-24 mx-auto bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-2xl font-bold border-2 border-white/30 group-hover:scale-105 group-hover:bg-white/25 transition-all duration-200 glow-secondary"
                   whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <img
                     src={member.avatar}
