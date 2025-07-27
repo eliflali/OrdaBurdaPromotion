@@ -21,42 +21,42 @@ const Features = () => {
       icon: Search,
       title: "Akıllı Etkinlik Keşfi",
       description:
-        "Zeki filtreleme ile ilgi alanlarınıza uygun etkinlikleri bulun. Yakınınızdaki yeni deneyimleri keşfedin veya dünyanın herhangi bir yerinden online etkinliklere katılın.",
+        "Gelişmiş filtreleme sistemi ile ilgi alanlarınıza en uygun etkinlikleri kolayca bulun. Çevrenizde yeni deneyimler keşfedin veya dünyanın her yerinden online etkinliklere katılın.",
       gradient: "from-primary-500 to-secondary-500",
     },
     {
       icon: Plus,
       title: "Kolay Etkinlik Oluşturma",
       description:
-        "Samimi buluşmalardan büyük organizasyonlara kadar her türlü etkinliği oluşturun. Kapasite sınırları belirleyin, onay süreçlerini yönetin ve bilet bilgilerini zahmetsizce paylaşın.",
+        "Küçük dostluk buluşmalarından büyük organizasyonlara kadar her türlü etkinliği kolayca oluşturun. Katılımcı kapasitesi belirleyin, onay süreçlerini yönetin ve etkinlik detaylarını zahmetsizce paylaşın.",
       gradient: "from-secondary-500 to-accent-400",
     },
     {
       icon: MessageCircle,
-      title: "Etkinlik Sohbet Grupları",
+      title: "Etkinlik Sohbet Odaları",
       description:
-        "Etkinliğe özel sohbet grupları aracılığıyla diğer katılımcılarla bağlantı kurun. Gerçek zamanlı mesajlaşma ile etkinlik öncesi, sırası ve sonrasında ilişkiler geliştirin.",
+        "Her etkinlik için özel sohbet odaları ile diğer katılımcılarla bağlantı kurun. Etkinlik öncesi, sırası ve sonrasında anlık mesajlaşma ile yeni arkadaşlıklar geliştirin.",
       gradient: "from-accent-400 to-secondary-300",
     },
     {
       icon: UserCheck,
-      title: "Sosyal Takip Sistemi",
+      title: "Akıllı Takip Sistemi",
       description:
-        "Favori etkinlik yaratıcılarınızı ve topluluklarınızı takip edin. Güvendiğiniz ve beğendiğiniz kişi ve organizasyonlardan gelen etkinliklerden haberdar olun.",
+        "Favori etkinlik organizatörlerinizi ve ilginizi çeken toplulukları takip edin. Beğendiğiniz ve güvendiğiniz kişilerden gelen yeni etkinlik duyurularından anında haberdar olun.",
       gradient: "from-primary-600 to-primary-400",
     },
     {
       icon: MapPin,
-      title: "Lokasyon Zekası",
+      title: "Esnek Konum Paylaşımı",
       description:
-        "Gizlilik için kesin konumlar veya yaklaşık alanlar arasından seçim yapın. Entegre harita ile hem fiziksel mekanlar hem de online etkinlikler için destek.",
+        "Gizliliğiniz için tam adres veya genel bölge arasından seçim yapın. Entegre harita desteği ile hem fiziksel mekanlar hem de online etkinlikler için mükemmel çözüm.",
       gradient: "from-secondary-600 to-secondary-400",
     },
     {
       icon: Star,
-      title: "Değerlendirme & Puanlama",
+      title: "Değerlendirme Sistemi",
       description:
-        "Deneyimlerinizi değerlendirmeler ve puanlamalar aracılığıyla başkalarıyla paylaşın. Topluluğun en iyi etkinlikleri ve en güvenilir organizatörleri keşfetmesine yardımcı olun.",
+        "Katıldığınız etkinlikleri değerlendirerek deneyimlerinizi toplulukla paylaşın. En iyi etkinlikleri ve güvenilir organizatörleri keşfetmek için topluluk puanlamalarından faydalanın.",
       gradient: "from-accent-500 to-secondary-400",
     },
   ];
@@ -91,9 +91,9 @@ const Features = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Etkinlik keşfinden topluluk oluşturmaya kadar, ordaburda benzer
-            düşünen insanlarla bağlantı kurmanız ve birlikte harika deneyimler
-            yaratmanız için ihtiyacınız olan her şeyi sağlar.
+            Etkinlik keşfinden topluluk oluşturmaya kadar, ordaburda aynı ilgi
+            alanlarına sahip insanlarla tanışmanız ve birlikte unutulmaz anılar
+            yaratmanız için gereken tüm araçları sunar.
           </motion.p>
         </motion.div>
 
