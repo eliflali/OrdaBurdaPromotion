@@ -1,18 +1,34 @@
 import Quote from "./Quote";
-import HeroImage from "/hero.png";
+import HeroImage from "/hero.svg";
 
 const Hero = () => {
   return (
-    <section
-      className="min-h-screen flex flex-col justify-center items-center px-4 py-8 md:px-8 lg:px-12"
-      style={{
-        backgroundImage: `url(${HeroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <section className="relative min-h-screen flex flex-col justify-center items-center px-4 py-8 md:px-8 lg:px-12 overflow-hidden">
+      {/* Background SVG */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${HeroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
+
+      {/* Gradient overlay for fade effect */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(
+            to bottom,
+            rgba(255,255,255, 0) 0%,   /* fully visible at top */
+            rgba(255,255,255, 0.6) 50%, /* 40% visible mid */
+            rgba(255,255,255, 0.9) 100% /* 10% visible bottom */
+          )`,
+        }}
+      ></div>
+
       {/* Main Content Container */}
-      <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+      <div className="relative z-10 w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
         {/* Left Content */}
         <div className="flex flex-col items-start gap-6 lg:gap-8 flex-1 max-w-2xl">
           {/* Brand Section */}
@@ -44,7 +60,8 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="mt-8 lg:mt-12 w-full flex justify-center">
+      {/* Quote */}
+      <div className="relative z-10 mt-8 lg:mt-12 w-full flex justify-center">
         <Quote />
       </div>
     </section>

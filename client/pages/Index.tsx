@@ -8,22 +8,20 @@ import Footer from "@/components/onepager/Footer";
 
 export default function Index() {
   return (
-    <div className="bg-[#FAFAFA] snap-y snap-proximity overflow-y-scroll h-screen">
+    <div className="bg-[#FAFAFA] overflow-y-scroll h-screen">
       {/* Snapping sections */}
-      <section className="snap-start">
+      <section>
         <Hero />
       </section>
-      <section className="snap-start">
+      <section>
         <FeaturesIntro />
       </section>
-      <section className="snap-start">
+      <section>
         <FeaturesGrid />
       </section>
-      <section className="snap-start">
+      <section>
         <Cooking />
       </section>
-
-      {/* Non-snapping sections - normal scroll */}
       <section>
         <Roadmap />
       </section>
