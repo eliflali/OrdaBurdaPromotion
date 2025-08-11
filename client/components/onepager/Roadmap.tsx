@@ -39,8 +39,7 @@ const Roadmap = () => {
               Geliştirme & Genişleme
             </h4>
             <p className="font-nunito text-[18px] md:text-[24px] font-normal text-[#252525] tracking-[0.24px] leading-normal">
-              Geri bildirimlerle ürünü geliştirme, premium üyelik modelini
-              başlatma ve yeni şehirlere açılma
+              Geri bildirimlerle ürünü geliştirme ve yeni şehirlere açılma
             </p>
           </div>
 
