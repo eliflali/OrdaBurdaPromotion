@@ -1,4 +1,11 @@
 import Material from "/material-black.svg";
+import Like from "/Like.svg";
+import Location from "/Location.svg";
+import Share from "/Share.svg";
+import Messages from "/Messages.svg";
+import Create from "/Create.svg";
+import Explore from "/Explore.svg";
+
 const FeaturesGrid = () => {
   return (
     <div className="w-full pt-8 pb-8 max-w-[1320px] px-4 mx-auto">
@@ -8,7 +15,7 @@ const FeaturesGrid = () => {
         <div className="flex flex-col p-6 rounded-2xl border border-[#8B8B8B] bg-[#F1F1F1] shadow-[0_2px_4px_0_rgba(0,0,0,0.25)] h-full">
           <div className="flex items-start gap-4 mb-4">
             <img
-              src={Material}
+              src={Share}
               alt="Material"
               className="w-[38px] h-[38px] flex-shrink-0"
             />
@@ -27,7 +34,7 @@ const FeaturesGrid = () => {
         <div className="flex flex-col p-6 rounded-2xl border border-[#8B8B8B] bg-[#F1F1F1] shadow-[0_2px_4px_0_rgba(0,0,0,0.25)] h-full">
           <div className="flex items-start gap-4 mb-4">
             <img
-              src={Material}
+              src={Location}
               alt="Material"
               className="w-[38px] h-[38px] flex-shrink-0"
             />
@@ -46,7 +53,7 @@ const FeaturesGrid = () => {
         <div className="flex flex-col p-6 rounded-2xl border border-[#8B8B8B] bg-[#F1F1F1] shadow-[0_2px_4px_0_rgba(0,0,0,0.25)] h-full">
           <div className="flex items-start gap-4 mb-4">
             <img
-              src={Material}
+              src={Like}
               alt="Material"
               className="w-[38px] h-[38px] flex-shrink-0"
             />
@@ -65,7 +72,7 @@ const FeaturesGrid = () => {
         <div className="flex flex-col p-6 rounded-2xl border border-[#8B8B8B] bg-[#F1F1F1] shadow-[0_2px_4px_0_rgba(0,0,0,0.25)] h-full">
           <div className="flex items-start gap-4 mb-4">
             <img
-              src={Material}
+              src={Explore}
               alt="Material"
               className="w-[38px] h-[38px] flex-shrink-0"
             />
@@ -78,20 +85,13 @@ const FeaturesGrid = () => {
             etkinlikleri kolayca bulun. Çevrenizde yeni deneyimler keşfedin veya
             dünyanın her yerinden online etkinliklere katılın.
           </p>
-          <div className="flex justify-center mt-auto">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/a4719cdf85c22ee608fddbc5ffd9ce722e0d011a?width=568"
-              alt="Event discovery mockup"
-              className="w-[284px] h-[551px] object-contain"
-            />
-          </div>
         </div>
 
         {/* Card 5: Easy Event Creation */}
         <div className="flex flex-col p-6 rounded-2xl border border-[#8B8B8B] bg-[#F1F1F1] shadow-[0_2px_4px_0_rgba(0,0,0,0.25)] h-full">
           <div className="flex items-start gap-4 mb-4">
             <img
-              src={Material}
+              src={Create}
               alt="Material"
               className="w-[38px] h-[38px] flex-shrink-0"
             />
@@ -104,20 +104,13 @@ const FeaturesGrid = () => {
             etkinliği kolayca oluşturun. Katılımcı kapasitesi belirleyin, onay
             süreçlerini yönetin ve etkinlik detaylarını zahmetsizce paylaşın.
           </p>
-          <div className="flex justify-center mt-auto">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/81e6bc94a6c807d9e750658a17ad7f9651ca2f14?width=568"
-              alt="Event creation mockup"
-              className="w-[284px] h-[557px] object-contain"
-            />
-          </div>
         </div>
 
         {/* Card 6: Event Chat Rooms */}
         <div className="flex flex-col p-6 rounded-2xl border border-[#8B8B8B] bg-[#F1F1F1] shadow-[0_2px_4px_0_rgba(0,0,0,0.25)] h-full">
           <div className="flex items-start gap-4 mb-4">
             <img
-              src={Material}
+              src={Messages}
               alt="Material"
               className="w-[38px] h-[38px] flex-shrink-0"
             />
@@ -130,13 +123,6 @@ const FeaturesGrid = () => {
             bağlantı kurun. Etkinlik öncesi, sırası ve sonrasında anlık
             mesajlaşma ile yeni arkadaşlıklar geliştirin.
           </p>
-          <div className="flex justify-center mt-auto">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/286d530d3a8a73d649b24d83f0b118836e4c680c?width=574"
-              alt="Chat rooms mockup"
-              className="w-[287px] h-[557px] object-contain"
-            />
-          </div>
         </div>
       </div>
     </div>
